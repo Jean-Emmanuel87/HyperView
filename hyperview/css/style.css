@@ -1,0 +1,18 @@
+:root {
+	--nx-blocks: 10;
+	--ny-blocks: 10;
+	--nx-pixels: 100;
+	--ny-pixels: 100;
+}
+
+.grid {
+	display: grid;
+}
+
+#blocks {
+	grid-template-columns: var(--nx-blocks, 10);
+}
+
+#pixels {
+	grid-template-columns: calc(var(--nx-pixels)/var(--nx-blocks));
+}
