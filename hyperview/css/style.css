@@ -5,12 +5,42 @@
 	--ny-pixels: 100;
 }
 
-.grid {
+main {
 	display: grid;
+	grid-template-areas: "a b"
+	                     "c c";
+	grid-gap: 16px;
+	width: 100%;
+}
+
+.grid-img-container {
+	display: grid;
+	height: min-content;
+}
+.grid-img-container > *{
+	grid-area: 1/1;
+}
+.grid-img-container > img {
+	width: 100%;
+	height: auto;
+}
+
+.grid-overlay {
+	display: grid;
+	grid-auto-row: auto;
+}
+.grid-overlay:hover > .area {
+	border: solid gray 1px;
+	margin: -1px;
+}
+.grid-overlay:hover > .area:hover {
+	border: solid black 3px;
+	margin: -3px;
+	z-index: 10;
 }
 
 #blocks {
-	grid-template-columns: var(--nx-blocks, 10);
+	grid-template-columns: repeat(var(--nx-blocks, 10), 1fr);
 }
 
 #pixels {
