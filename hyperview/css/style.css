@@ -64,15 +64,15 @@ h1, h3 {
 }
 
 #pixels {
-	--nx: calc(var(--x2) - var(--x1) + 1);
+	--nx: calc(var(--x2) - var(--x1));
 	grid-template-columns: repeat(var(--nx), 1fr);
 }
 
 #card-zoom {
-	--x1: -1;
-	--x2: 0;
-	--y1: -1;
-	--y2: 0;
+	--x1: -10;
+	--x2: -5;
+	--y1: -10;
+	--y2: -5;
 }
 
 #img-zoom {
@@ -89,7 +89,7 @@ h1, h3 {
 	--zoom-rel-width: calc(1 - var(--zoom-rel-left) - var(--zoom-rel-right));
 	--zoom-rel-height: calc(1 - var(--zoom-rel-up) - var(--zoom-rel-down));
 	transform: translate(calc(var(--zoom-rel-left)*-100%), calc(var(--zoom-rel-up)*-100%))
-	           scale(calc(1/var(--zoom-rel-width)), calc(1/var(--zoom-rel-width)));
+	           scale(calc(1/var(--zoom-rel-width)), calc(1/var(--zoom-rel-height)));
 	transform-origin: calc(var(--zoom-rel-left)*100%) calc(var(--zoom-rel-up)*100%);
 }
 

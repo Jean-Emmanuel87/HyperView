@@ -27,11 +27,10 @@ function createBlocks() {
 			block.dataset.y2 = y2;
 			block.addEventListener('click', updateZoom);
 			blocks.appendChild(block);
-			if (y == 0) { rows_template += (x2-x1+1) + "fr "; }
+			if (y == 0) { rows_template += (x2-x1) + "fr "; }
 		}
-		columns_template += (y2-y1+1) + "fr ";
+		columns_template += (y2-y1) + "fr ";
 	}
-	console.log(rows_template);
 	blocks.style.gridTemplateRows = rows_template;
 	blocks.style.gridTemplateColumns = columns_template;
 }
@@ -41,8 +40,8 @@ function createPixels(x1, x2, y1, y2) {
 	pixels.innerHTML = '';
 	let spectra = document.getElementById('spectra');
 	spectra.innerHTML = '';
-	for (let y=y1;y <= y2;y++) {
-		for (let x=x1;x <= x2;x++) {
+	for (let y=y1;y < y2;y++) {
+		for (let x=x1;x < x2;x++) {
 			pixel = document.createElement('div');
 			pixel.classList.add('area');
 			pixel.classList.add('pixel');
