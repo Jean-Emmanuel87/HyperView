@@ -52,8 +52,8 @@ function createPixels(x1, x2, y1, y2) {
 			pixel = document.createElement('div');
 			pixel.classList.add('area');
 			pixel.classList.add('pixel');
-			pixel.dataset.x = x;
-			pixel.dataset.y = y;
+			pixel.dataset.x = x+1;
+			pixel.dataset.y = y+1;
 			pixel.dataset.for = "spectrum_x"+x+"y"+y;
 			pixel.addEventListener('mouseover', updateSpectrum);
 			pixels.appendChild(pixel);
@@ -63,7 +63,7 @@ function createPixels(x1, x2, y1, y2) {
 			radio.id = pixel.dataset.for;
 			spectra.appendChild(radio);
 			spectrum = document.createElement('img');
-			spectrum.src = "data/spectrum_x"+x+"y"+y+".png";
+			spectrum.src = "data/spectrum_x"+pixel.dataset.x+"y"+pixel.dataset.y+".png";
 			spectra.appendChild(spectrum);
 		}
 	}
@@ -93,6 +93,8 @@ function updateSpectrum(event) {
 	let pixel = event.currentTarget;
 	let radio = document.getElementById(pixel.dataset.for);
 	radio.checked = true;
+	let position = document.getElementById('position');
+	position.textContent = 'pos: x'+pixel.dataset.x+'y'+pixel.dataset.y;
 }
 
 function setup() {

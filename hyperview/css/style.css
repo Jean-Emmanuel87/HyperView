@@ -50,7 +50,7 @@ h1, h3 {
 	z-index: 5;
 }
 .grid-overlay:hover > .area {
-	border: solid gray 1px;
+	border: solid #00000010 1px;
 	margin: -1px;
 }
 .grid-overlay:hover > .area:hover {
@@ -124,4 +124,10 @@ h1, h3 {
 }
 #spectra > input:checked + img {
 	display: block;
+}
+
+#position {
+	position: absolute;
+	font-size: x-large;
+	font-family: monospace;
 }
