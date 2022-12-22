@@ -8,7 +8,9 @@ main {
 	                     "c c";
 	grid-gap: 16px;
 	width: 100%;
-	grid-template-columns: 50% 50%;
+	/*grid-template-columns: 50% 50%;*/
+	grid-template-rows: 50vh auto;
+	justify-content: space-evenly;
 }
 
 header {
@@ -33,8 +35,10 @@ header > div > span {
 	grid-area: 1/1;
 }
 .grid-img-container > img {
-	width: 100%;
-	height: auto;
+	/*width: 100%;
+	height: auto;*/
+	width: auto;
+	height: 50vh;
 }
 
 .grid-overlay {
