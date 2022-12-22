@@ -10,7 +10,9 @@
 <body>
 	<header>
 		<h1>Hypergraph viewer</h1>
-		<span id="sys-name">System Name</span>
+		<div>System Name:<br/><span id="sys-name"></span></div>
+		<div>Date:<br/><span id="date"></span></div>
+		<div>Author:<br/><span id="author"></span></div>
 	</header>
 	<main>
 		<div id="card-main" class="grid-img-container">
@@ -18,12 +20,15 @@
 			<div id="blocks" class="grid-overlay"></div>
 		</div>
 		<div id="card-zoom" class="grid-img-container">
+			<div id="zoom-placeholder">Click on the image to zoom,<br/>then hover here</div>
 			<img id="img-zoom" src="data/main.png"/>
 			<div id="pixels" class="grid-overlay"></div>
 		</div>
-		<div id="card-spectrum"></div>
+		<div id="card-spectrum">
+			<div id="spectra"></div>
+		</div>
 	</main>
 	<footer>
-		<span>Version 1.0.1, released 2022/12/22. All rights reserved.</span>
+		<span>Version 1.0.1, released 2022/12/22 under MIT Licence.</span>
 	</footer>
 </body>

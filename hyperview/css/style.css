@@ -1,8 +1,5 @@
-:root {
-	--nx-blocks: 10;
-	--ny-blocks: 10;
-	--nx-pixels: 100;
-	--ny-pixels: 100;
+body {
+	font-family: 'Palatino', 'Helvetica';
 }
 
 main {
@@ -11,6 +8,21 @@ main {
 	                     "c c";
 	grid-gap: 16px;
 	width: 100%;
+	grid-template-columns: 50% 50%;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	border-bottom: solid #eeeeee 2px;
+	margin-bottom: 16px;
+}
+header > div {
+	font-size: x-large;
+}
+header > div > span {
+	font-weight: bold;
 }
 
 .grid-img-container {
@@ -28,6 +40,7 @@ main {
 .grid-overlay {
 	display: grid;
 	grid-auto-row: auto;
+	z-index: 5;
 }
 .grid-overlay:hover > .area {
 	border: solid gray 1px;
@@ -40,9 +53,60 @@ main {
 }
 
 #blocks {
-	grid-template-columns: repeat(var(--nx-blocks, 10), 1fr);
+	grid-template-columns: auto;
 }
 
 #pixels {
-	grid-template-columns: calc(var(--nx-pixels)/var(--nx-blocks));
+	--nx: calc(var(--x2) - var(--x1) + 1);
+	grid-template-columns: repeat(var(--nx), 1fr);
+}
+
+#card-zoom {
+	--x1: -1;
+	--x2: 0;
+	--y1: -1;
+	--y2: 0;
+}
+
+#img-zoom {
+	--zoom-rel-left: calc(var(--x1)/var(--xtot));
+	--zoom-rel-right: calc(1 - var(--x2)/var(--xtot));
+	--zoom-rel-up: calc(var(--y1)/var(--ytot));
+	--zoom-rel-down: calc(1 - var(--y2)/var(--ytot));
+	clip-path: inset(
+			 calc(var(--zoom-rel-up)*100%)
+			 calc(var(--zoom-rel-right)*100%)
+			 calc(var(--zoom-rel-down)*100%)
+			 calc(var(--zoom-rel-left)*100%)
+			);
+	--zoom-rel-width: calc(1 - var(--zoom-rel-left) - var(--zoom-rel-right));
+	--zoom-rel-height: calc(1 - var(--zoom-rel-up) - var(--zoom-rel-down));
+	transform: translate(calc(var(--zoom-rel-left)*-100%), calc(var(--zoom-rel-up)*-100%))
+	           scale(calc(1/var(--zoom-rel-width)), calc(1/var(--zoom-rel-width)));
+	transform-origin: calc(var(--zoom-rel-left)*100%) calc(var(--zoom-rel-up)*100%);
+}
+
+#zoom-placeholder {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: xx-large;
+	text-align: center;
+}
+
+#card-spectrum {
+	grid-area: c;
+	display: flex;
+	justify-content: center;
+}
+#spectra > img {
+	display: none;
+}
+#spectra > input {
+	display: none;
+}
+#spectra > input:checked + img {
+	display: block;
 }
