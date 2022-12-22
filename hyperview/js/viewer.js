@@ -1,12 +1,10 @@
-var nx_pixels = 200;
-var ny_pixels = 100;
-var nx_blocks = 10;
-var ny_blocks = 10;
-
 function registerParams() {
 	let zoom = document.getElementById('card-zoom');
 	zoom.style.setProperty('--xtot', nx_pixels);
 	zoom.style.setProperty('--ytot', ny_pixels);
+	document.getElementById('sys-name').textContent = name;
+	document.getElementById('date').textContent = date;
+	document.getElementById('author').textContent = author;
 }
 
 function createBlocks() {

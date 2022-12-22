@@ -27,6 +27,9 @@ header > div > span {
 	font-weight: bold;
 }
 
+h1, h3 {
+	margin: 4px;
+}
 .grid-img-container {
 	display: grid;
 	height: min-content;
