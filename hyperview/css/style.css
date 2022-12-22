@@ -54,13 +54,21 @@ h1, h3 {
 	margin: -1px;
 }
 .grid-overlay:hover > .area:hover {
-	border: solid black 3px;
+	border: solid black 3px !important;
 	margin: -3px;
 	z-index: 10;
 }
 
 #blocks {
 	grid-template-columns: auto;
+}
+#blocks > input {
+	display: none;
+}
+#blocks > input:checked + .area {
+	border: solid white 3px;
+        margin: -3px;
+        z-index: 9;
 }
 
 #pixels {

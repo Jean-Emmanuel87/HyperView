@@ -9,7 +9,7 @@ function registerParams() {
 
 function createBlocks() {
 	let blocks = document.getElementById('blocks');
-	let block, x1, x2, y1, y2;
+	let block, radio, x1, x2, y1, y2;
 	let rows_template = '';
 	let columns_template = '';
 	for (let y=0;y < ny_blocks;y++) {
@@ -25,7 +25,13 @@ function createBlocks() {
 			block.dataset.x2 = x2;
 			block.dataset.y1 = y1;
 			block.dataset.y2 = y2;
+			block.dataset.for = "block_x"+x+"y"+y;
 			block.addEventListener('click', updateZoom);
+			radio = document.createElement('input');
+			radio.type = "radio";
+			radio.name = "block";
+			radio.id = block.dataset.for;
+			blocks.appendChild(radio);
 			blocks.appendChild(block);
 			if (y == 0) { rows_template += (x2-x1) + "fr "; }
 		}
@@ -40,6 +46,7 @@ function createPixels(x1, x2, y1, y2) {
 	pixels.innerHTML = '';
 	let spectra = document.getElementById('spectra');
 	spectra.innerHTML = '';
+	let radio;
 	for (let y=y1;y < y2;y++) {
 		for (let x=x1;x < x2;x++) {
 			pixel = document.createElement('div');
@@ -73,6 +80,7 @@ function updateZoom(event) {
 	zoom.style.setProperty('--x2', x2);
 	zoom.style.setProperty('--y1', y1);
 	zoom.style.setProperty('--y2', y2);
+	document.getElementById(block.dataset.for).checked = true;
 	createPixels(
 		parseInt(x1),
 		parseInt(x2),
